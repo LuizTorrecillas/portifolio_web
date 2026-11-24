@@ -1,218 +1,360 @@
-   :root {
-    /* Cores */
-    --cor-fundo: #0a0a0e;
-    --cor-superficie: #16161c;
-    --cor-borda: #2b2b35;
-    --cor-texto: #f4f4f6;
-    --cor-texto-suave: #9b9ba4;
-    --cor-destaque: #ff7a18;
-    --cor-destaque-texto: #1c0d00;
-  
-    /* Tipografia */
-    --fonte: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
-    --fonte-mono: "JetBrains Mono", "SF Mono", Consolas, monospace;
-  
-    /* Layout */
-    --largura-maxima: 1140px;
-    --espaco-lateral: 24px;
-  
-    /* Formas */
-    --raio: 10px;
-    --raio-pill: 999px;
-  
-    /* Movimento */
-    --transicao: 180ms ease;
-  }
-  
-  
-  
+
   /* ---------- Botão ---------- */
-  
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 13px 22px;
-    border: 1px solid var(--cor-borda);
-    border-radius: var(--raio);
-    background-color: var(--cor-superficie);
-    color: var(--cor-texto);
-    font-size: 0.95rem;
-    font-weight: 500;
-    text-decoration: none;
-    transition: background-color var(--transicao),
-                border-color var(--transicao),
-                transform var(--transicao);
-  }
-  
-  .btn:hover {
-    border-color: var(--cor-destaque);
-    transform: translateY(-2px);
-  }
-  
-  /* Modificador: muda só cor de fundo e do texto, nada mais. */
-  .btn--primario {
-    background-color: var(--cor-destaque);
-    border-color: var(--cor-destaque);
-    color: var(--cor-destaque-texto);
-    font-weight: 600;
-  }
-  
-  .btn--primario:hover {
-    /* color-mix mistura o laranja com branco → versão mais clara no hover,
-       sem precisar criar outra variável de cor. */
-    background-color: color-mix(in srgb, var(--cor-destaque) 85%, white);
-    border-color: color-mix(in srgb, var(--cor-destaque) 85%, white);
-  }
-  
-  /* ---------- Badge ---------- */
-  
-  .badge {
-    display: inline-block;
-    padding: 7px 16px;
-    /* 12% de laranja + 88% do fundo = laranja translúcido sem variável nova */
-    background-color: color-mix(in srgb, var(--cor-destaque) 12%, var(--cor-fundo));
-    border: 1px solid color-mix(in srgb, var(--cor-destaque) 35%, transparent);
-    border-radius: var(--raio-pill);
-    color: var(--cor-destaque);
-    font-family: var(--fonte-mono);
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    line-height: 1.4;
-  }
-  
-  
-  /* ==========================================================================
-     5. BLOCOS — seções específicas da página
-     ========================================================================== */
-  
-  /* ---------- Cabeçalho ---------- */
-  
-  .topo {
-    padding-block: 20px;
-  }
-  
-  .topo__conteudo {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-  }
-  
-  .logo {
-    color: var(--cor-texto);
-    font-size: 1.05rem;
-    font-weight: 600;
-    text-decoration: none;
-    letter-spacing: -0.01em;
-  }
-  
-  .topo__acoes {
-    display: flex;
-    align-items: center;
-    gap: 28px;
-  }
-  
-  .nav__lista {
-    display: flex;
-    gap: 28px;
-  }
-  
-  .nav__link {
-    color: var(--cor-texto-suave);
-    font-size: 0.95rem;
-    text-decoration: none;
-    transition: color var(--transicao);
-  }
-  
-  .nav__link:hover {
-    color: var(--cor-texto);
-  }
-  
-  /* Botão de tema: círculo laranja dentro de uma borda circular */
-  .tema {
-    width: 38px;
-    height: 38px;
-    padding: 0;
-    border: 1px solid var(--cor-borda);
-    border-radius: 50%;
-    background-color: var(--cor-superficie);
-    cursor: pointer;
-    /* truque: o "miolo" laranja é um gradiente radial, sem elemento extra */
-    background-image: radial-gradient(
-      circle,
-      var(--cor-destaque) 0 9px,
-      transparent 9px
-    );
-    transition: border-color var(--transicao);
-  }
-  
-  .tema:hover {
-    border-color: var(--cor-destaque);
-  }
-  
-  /* ---------- Hero ---------- */
-  
-  .hero {
-    padding-block: 90px 110px;
-  }
-  
-  .hero__grid {
-    display: grid;
-    grid-template-columns: 1.15fr 1fr;
-    align-items: center;
-    gap: 64px;
-  }
-  
-  /* Espaçamento vertical resolvido com gap, não com margin solta. */
-  .hero__texto {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* impede o badge de esticar na largura toda */
-    gap: 24px;
-  }
-  
-  .hero__titulo {
-    /* clamp(mínimo, ideal, máximo) → fonte fluida sem media query */
-    font-size: clamp(2.75rem, 6vw, 4.25rem);
-    font-weight: 700;
-    line-height: 1.05;
-    letter-spacing: -0.03em;
-  }
-  
-  .hero__subtitulo {
-    max-width: 34ch;
-    font-size: clamp(1.05rem, 2vw, 1.3rem);
-    line-height: 1.5;
-    color: var(--cor-texto);
-  }
-  
-  .hero__descricao {
-    max-width: 48ch;
-    font-size: 0.95rem;
-    color: var(--cor-texto-suave);
-  }
-  
-  .hero__acoes {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 14px;
-    margin-top: 8px;
-  }
-  
-  .hero__foto {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .hero__foto img {
-    width: min(340px, 100%);
-    aspect-ratio: 1;
-    border-radius: 50%;
-    border: 2px solid var(--cor-destaque);
-    object-fit: cover; /* recorta sem distorcer a foto */
-  }
-  
-  
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 22px;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  background-color: var(--cor-superficie);
+  color: var(--cor-texto);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color var(--transicao),
+              border-color var(--transicao),
+              transform var(--transicao);
+}
+
+.btn:hover {
+  border-color: var(--cor-destaque);
+  transform: translateY(-2px);
+}
+
+/* Modificador: muda só cor de fundo e do texto, nada mais. */
+.btn--primario {
+  background-color: var(--cor-destaque);
+  border-color: var(--cor-destaque);
+  color: var(--cor-destaque-texto);
+  font-weight: 600;
+}
+
+.btn--primario:hover {
+  /* color-mix mistura o laranja com branco → versão mais clara no hover,
+     sem precisar criar outra variável de cor. */
+  background-color: color-mix(in srgb, var(--cor-destaque) 85%, white);
+  border-color: color-mix(in srgb, var(--cor-destaque) 85%, white);
+}
+
+/* ---------- Badge ---------- */
+
+.badge {
+  display: inline-block;
+  padding: 7px 16px;
+  /* 12% de laranja + 88% do fundo = laranja translúcido sem variável nova */
+  background-color: color-mix(in srgb, var(--cor-destaque) 12%, var(--cor-fundo));
+  border: 1px solid color-mix(in srgb, var(--cor-destaque) 35%, transparent);
+  border-radius: var(--raio-pill);
+  color: var(--cor-destaque);
+  font-family: var(--fonte-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+
+/* ---------- Filtro (botões Todas / Python / SQL...) ---------- */
+
+.filtro {
+  /* <button> vem com fonte, borda e fundo próprios do navegador:
+     por isso definimos todos explicitamente aqui */
+  font-family: var(--fonte-mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 9px 20px;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-pill);
+  background-color: transparent;
+  color: var(--cor-texto-suave);
+  cursor: pointer;
+  transition: color var(--transicao),
+              border-color var(--transicao),
+              background-color var(--transicao);
+}
+
+.filtro:hover {
+  color: var(--cor-texto);
+  border-color: var(--cor-texto-suave);
+}
+
+/* Estado ativo: mesma lógica do .btn--primario */
+.filtro--ativo,
+.filtro--ativo:hover {
+  background-color: var(--cor-destaque);
+  border-color: var(--cor-destaque);
+  color: var(--cor-destaque-texto);
+  font-weight: 600;
+}
+
+
+/* ==========================================================================
+   5. BLOCOS — seções específicas da página
+   ========================================================================== */
+
+/* ---------- Cabeçalho ---------- */
+
+.topo {
+  padding-block: 20px;
+}
+
+.topo__conteudo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.logo {
+  color: var(--cor-texto);
+  font-size: 1.05rem;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+.topo__acoes {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav__lista {
+  display: flex;
+  gap: 28px;
+}
+
+.nav__link {
+  color: var(--cor-texto-suave);
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: color var(--transicao);
+}
+
+.nav__link:hover {
+  color: var(--cor-texto);
+}
+
+/* Botão de tema: círculo laranja dentro de uma borda circular */
+.tema {
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: 1px solid var(--cor-borda);
+  border-radius: 50%;
+  background-color: var(--cor-superficie);
+  cursor: pointer;
+  /* truque: o "miolo" laranja é um gradiente radial, sem elemento extra */
+  background-image: radial-gradient(
+    circle,
+    var(--cor-destaque) 0 9px,
+    transparent 9px
+  );
+  transition: border-color var(--transicao);
+}
+
+.tema:hover {
+  border-color: var(--cor-destaque);
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  padding-block: 90px 110px;
+}
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  align-items: center;
+  gap: 64px;
+}
+
+/* Espaçamento vertical resolvido com gap, não com margin solta. */
+.hero__texto {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* impede o badge de esticar na largura toda */
+  gap: 24px;
+}
+
+.hero__titulo {
+  /* clamp(mínimo, ideal, máximo) → fonte fluida sem media query */
+  font-size: clamp(2.75rem, 6vw, 4.25rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.hero__subtitulo {
+  max-width: 34ch;
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  line-height: 1.5;
+  color: var(--cor-texto);
+}
+
+.hero__descricao {
+  max-width: 48ch;
+  font-size: 0.95rem;
+  color: var(--cor-texto-suave);
+}
+
+.hero__acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.hero__foto {
+  display: flex;
+  justify-content: center;
+}
+
+.hero__foto img {
+  width: min(340px, 100%);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 2px solid var(--cor-destaque);
+  object-fit: cover; /* recorta sem distorcer a foto */
+}
+
+
+/* ---------- Títulos de seção (reutilizado em Projetos, Sobre, Contato) ---------- */
+
+.secao__titulo {
+  margin: 0 0 28px;
+  font-size: clamp(1.9rem, 4vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+/* ---------- Projetos ---------- */
+
+.projetos {
+  padding-block: 40px 110px;
+}
+
+.filtros {
+  display: flex;
+  flex-wrap: wrap; /* quebra pra linha de baixo no celular */
+  gap: 12px;
+  margin-bottom: 28px; /* espaço até os cards */
+}
+
+/* auto-fill + minmax: cabem quantas colunas der, cada uma com no mínimo
+   300px. 3 no desktop, 2 no tablet, 1 no celular — sem media query. */
+.projetos__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+/* ---------- Card ---------- */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: 14px;
+  overflow: hidden; /* faz a imagem respeitar os cantos arredondados */
+  transition: border-color var(--transicao), transform var(--transicao);
+}
+
+.card:hover {
+  border-color: color-mix(in srgb, var(--cor-destaque) 45%, var(--cor-borda));
+  transform: translateY(-3px);
+}
+
+.card__topo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* status não estica */
+  gap: 12px;
+  padding: 24px 24px 18px;
+}
+
+/* Status e tags compartilham o mesmo visual base */
+.card__status,
+.tag {
+  background-color: color-mix(in srgb, var(--cor-destaque) 14%, var(--cor-superficie));
+  color: var(--cor-destaque);
+  font-family: var(--fonte-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.card__status {
+  padding: 4px 12px;
+  border-radius: var(--raio-pill);
+}
+
+.card__titulo {
+  font-size: 1.45rem;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+/* Área do print: funciona com o texto provisório ou com uma <img> dentro */
+.card__midia {
+  display: grid;
+  place-items: center; /* centraliza o texto nos dois eixos */
+  height: 150px;
+  background-color: color-mix(in srgb, var(--cor-superficie) 95%, white);
+  border-block: 1px solid var(--cor-borda);
+  color: var(--cor-texto-suave);
+  font-family: var(--fonte-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.card__midia img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card__corpo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  flex: 1; /* ocupa a sobra de altura → cards da mesma linha ficam iguais */
+  padding: 24px;
+}
+
+.card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  padding: 4px 9px;
+  border-radius: 6px;
+}
+
+.card__descricao {
+  color: var(--cor-texto-suave);
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+.card__link {
+  color: var(--cor-destaque);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.card__link:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}

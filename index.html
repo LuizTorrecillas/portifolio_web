@@ -9,6 +9,7 @@
 
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/root.css">
   
 </head>
 <body>
@@ -66,6 +67,115 @@
 
         <div class="hero__foto">
           <img src="assets/foto.jpg" alt="Luiz Torrecillas, estudante de Ciência da Computação">
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ---------- Projetos ---------- -->
+    <section class="projetos" id="projetos">
+      <div class="container">
+
+        <h2 class="secao__titulo">Projetos</h2>
+
+        <div class="filtros" role="group" aria-label="Filtrar projetos por tecnologia">
+          <button class="filtro filtro--ativo" type="button" data-filtro="todos" aria-pressed="true">Todas</button>
+          <button class="filtro" type="button" data-filtro="python" aria-pressed="false">Python</button>
+          <button class="filtro" type="button" data-filtro="sql" aria-pressed="false">SQL</button>
+          <button class="filtro" type="button" data-filtro="excel" aria-pressed="false">Excel</button>
+          <button class="filtro" type="button" data-filtro="modelagem" aria-pressed="false">Modelagem</button>
+        </div>
+
+
+        <div class="projetos__grid">
+
+          <!-- ===== Card 1 ===== -->
+          <article class="card" data-tags="python sql">
+            <div class="card__topo">
+              <span class="card__status">Em andamento</span>
+              <h3 class="card__titulo">Sistema de Agendamento para Clínicas</h3>
+            </div>
+
+            <!-- Quando tiver o print, troque o texto por:
+                 <img src="assets/projetos/agendamento.png" alt="Tela de agenda do sistema"> -->
+            <div class="card__midia">Adicione um print</div>
+
+            <div class="card__corpo">
+              <ul class="card__tags" aria-label="Tecnologias">
+                <li class="tag">Python</li>
+                <li class="tag">OO</li>
+                <li class="tag">SQLite</li>
+                <li class="tag">SQL</li>
+              </ul>
+
+              <p class="card__descricao">
+                Agenda de consultas odontológicas em Python orientado a objetos,
+                com camada de repositório isolando o banco e checagem de conflito
+                de horário.
+              </p>
+
+              <a href="#" class="card__link" target="_blank" rel="noopener">
+                Código no GitHub <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- ===== Card 2 ===== -->
+          <article class="card" data-tags="excel">
+            <div class="card__topo">
+              <span class="card__status">Concluído</span>
+              <h3 class="card__titulo">Sistema de Indicadores e KPIs</h3>
+            </div>
+
+            <div class="card__midia">Adicione um print</div>
+
+            <div class="card__corpo">
+              <ul class="card__tags" aria-label="Tecnologias">
+                <li class="tag">Excel</li>
+                <li class="tag">Power Query</li>
+                <li class="tag">ETL</li>
+              </ul>
+
+              <p class="card__descricao">
+                Pipeline de tratamento de dados em Power Query e dashboard
+                interativo de faturamento e margem, com filtros em tempo real.
+              </p>
+
+              <a href="#" class="card__link" target="_blank" rel="noopener">
+                Ver o arquivo <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- ===== Card 3 ===== -->
+          <article class="card" data-tags="modelagem sql">
+            <div class="card__topo">
+              <span class="card__status">Concluído</span>
+              <h3 class="card__titulo">Modelagem de Dados e Arquitetura</h3>
+            </div>
+
+            <div class="card__midia">Adicione um print</div>
+
+            <div class="card__corpo">
+              <ul class="card__tags" aria-label="Tecnologias">
+                <li class="tag">MER</li>
+                <li class="tag">SQL</li>
+                <li class="tag">NoSQL</li>
+                <li class="tag">Camadas</li>
+              </ul>
+
+              <p class="card__descricao">
+                MER conceitual e lógico de um sistema de pedidos, com ensaio
+                comparando relacional e NoSQL e estudo de arquitetura em camadas.
+              </p>
+
+              <a href="#" class="card__link" target="_blank" rel="noopener">
+                Ver o diagrama <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+
         </div>
 
       </div>
